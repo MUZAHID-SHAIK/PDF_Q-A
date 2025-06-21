@@ -1,1 +1,1 @@
-# PDF Q&A App Fullstack Project
+This project allows users to ask questions based on uploaded PDFs using local LLMs.
