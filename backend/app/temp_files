@@ -1,0 +1,12 @@
+import os
+
+UPLOAD_DIR = "temp_files"  # relative path to the temp_files folder
+
+@app.post("/upload")
+async def upload_pdf(file: UploadFile = File(...)):
+    os.makedirs(UPLOAD_DIR, exist_ok=True)  # ensure folder exists
+    path = os.path.join(UPLOAD_DIR, file.filename)  # e.g., temp_files/MUZAHID BASHA.pdf
+    with open(path, "wb") as f:
+        f.write(await file.read())  # use await when reading async file
+
+    return {"filename": file.filename, "path": path}
